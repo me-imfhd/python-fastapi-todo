@@ -1,4 +1,3 @@
-print("Hello")
 from dotenv import load_dotenv
 # Load the .env file
 load_dotenv()
@@ -9,8 +8,10 @@ db_uri = os.getenv('DATABASE_URI')
 api_key = os.getenv('API_KEY')
 
 from fastapi import FastAPI
+from api.routes.todo import todo_router
 
 app = FastAPI()
+app.include_router(todo_router)
 
 @app.get("/")
 def index():

@@ -1,5 +1,5 @@
 start:
-	python app/main.py start
+	python main.py start
 
 stop:
-	python app/main.py stop
+	python main.py stop
