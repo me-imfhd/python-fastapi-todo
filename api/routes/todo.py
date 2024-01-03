@@ -1,20 +1,10 @@
-from fastapi import APIRouter
+from fastapi import APIRouter,HTTPException,status
+from api.models.todo import Todo
+from api.schemas.todo import GetTodo,PostTodo,PutTodo
 
 todo_router =  APIRouter(prefix="/api",tags=["Todo"])
 
 @todo_router.get("/")
-def all_todo():
-    return "Not Implemented"
-
-@todo_router.post("/")
-def post_todo():
-    return "Not Implemented"
-    
-@todo_router.put("/{key}")
-def update_todo(key: int):
-    return "Not Implemented"
-    
-@todo_router.delete("/{key}")
-def delete_todo(key: int):
-    return "Not Implemented"
+async def all_todo():
+    return await GetTodo.from_queryset(Todo.all())
     
