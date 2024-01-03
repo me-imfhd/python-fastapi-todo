@@ -1,6 +1,5 @@
 print("Hello")
 from dotenv import load_dotenv
-
 # Load the .env file
 load_dotenv()
 
@@ -8,5 +7,11 @@ load_dotenv()
 import os
 db_uri = os.getenv('DATABASE_URI')
 api_key = os.getenv('API_KEY')
-print(db_uri) # should return NONE
-print(api_key) # should return 123
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def index():
+    return {"status":"todo api is running"}
